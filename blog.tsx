@@ -173,8 +173,7 @@ export async function configureBlog(
   let directory;
 
   try {
-    //const blogPath = fromFileUrl(url);
-    const blogPath = fromFileUrl(IS_DEV ? `file://${url}` : url);
+    const blogPath = fromFileUrl(`file://${url}`);
     directory = dirname(blogPath);
   } catch (e) {
     console.error(e);
