@@ -7,8 +7,7 @@ export {
   fromFileUrl,
   join,
   relative,
-//} from "https://deno.land/std@0.193.0/path/mod.ts";
-} from "jsr:@std/path";
+} from "https://deno.land/std@0.193.0/path/mod.ts";
 export {
   type ConnInfo,
   serve,
