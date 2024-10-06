@@ -7,7 +7,6 @@
 /// <reference lib="deno.ns" />
 
 import {
-  callsites,
   ColorScheme,
   createReporter,
   dirname,
@@ -106,7 +105,7 @@ export default async function blog(settings?: BlogSettings) {
   html.use(UnoCSS(settings?.unocss)); // Load custom unocss module if provided
   html.use(ColorScheme("auto"));
 
-  const url = callsites()[1].getFileName()!;
+  const url = Deno.mainModule
   const blogState = await configureBlog(url, IS_DEV, settings);
 
   const blogHandler = createBlogHandler(blogState);
@@ -173,7 +172,7 @@ export async function configureBlog(
   let directory;
 
   try {
-    const blogPath = fromFileUrl(`file://${url}`);
+    const blogPath = fromFileUrl(url)
     directory = dirname(blogPath);
   } catch (e) {
     console.error(e);
